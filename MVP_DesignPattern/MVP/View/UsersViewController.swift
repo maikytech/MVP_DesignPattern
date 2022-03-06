@@ -7,9 +7,12 @@
 
 import UIKit
 
-class UsersViewController: UIViewController {
-    
+class UsersViewController: UIViewController, UserPresenterDelegate {
+
     //MARK: - Variables
+    private let presenter =  UserPresenter()
+    private var users = [User]()
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -20,16 +23,9 @@ class UsersViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        presenter.setViewDelegate(delegate: self)
+        presenter.getUsers()
       
-    }
-    
-    //MARK: - Private Methods
-    private func setupView() {
-        title = "Users"
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,16 +34,33 @@ class UsersViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
+    //MARK: - Private Methods
+    private func setupView() {
+        title = "Users"
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func presentUsers(users: [User]) {
+        self.users = users
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
 }
 
 //MARK: - UITableViewDataSource
 extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = users[indexPath.row].name
         return cell
     }
 }

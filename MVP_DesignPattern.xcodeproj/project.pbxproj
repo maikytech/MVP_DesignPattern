@@ -15,6 +15,7 @@
 		65311FB727D3D0D8007CE6C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65311FB527D3D0D8007CE6C5 /* LaunchScreen.storyboard */; };
 		65311FC427D3D504007CE6C5 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65311FC327D3D504007CE6C5 /* Presenter.swift */; };
 		65311FC627D3E44F007CE6C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65311FC527D3E44F007CE6C5 /* User.swift */; };
+		65311FC827D456D8007CE6C5 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65311FC727D456D8007CE6C5 /* NetworkingProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		65311FB827D3D0D8007CE6C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65311FC327D3D504007CE6C5 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		65311FC527D3E44F007CE6C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		65311FC727D456D8007CE6C5 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		65311FC227D3D46B007CE6C5 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				65311FC727D456D8007CE6C5 /* NetworkingProvider.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				65311FAF27D3D0D7007CE6C5 /* UsersViewController.swift in Sources */,
 				65311FAB27D3D0D7007CE6C5 /* AppDelegate.swift in Sources */,
+				65311FC827D456D8007CE6C5 /* NetworkingProvider.swift in Sources */,
 				65311FC427D3D504007CE6C5 /* Presenter.swift in Sources */,
 				65311FC627D3E44F007CE6C5 /* User.swift in Sources */,
 				65311FAD27D3D0D7007CE6C5 /* SceneDelegate.swift in Sources */,

@@ -22,12 +22,12 @@ final class UserPresenter {
     
     private weak var delegate: PresenterDelegate?
     
-    private func setViewDelegate(delegate: PresenterDelegate) {
+    func setViewDelegate(delegate: PresenterDelegate) {
         self.delegate = delegate
         
     }
     
-    private func getUsers() {
+    func getUsers() {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {
             return
         }
