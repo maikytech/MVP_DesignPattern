@@ -49,7 +49,11 @@ class UsersViewController: UIViewController, UserPresenterDelegate {
         }
     }
     
-    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -68,7 +72,7 @@ extension UsersViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Ask presenter to handle the tap.
+        presenter.didTap(user: users[indexPath.row])
     }
     
 }

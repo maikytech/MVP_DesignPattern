@@ -8,30 +8,22 @@
 import Foundation
 import UIKit
 
-// https://jsonplaceholder.typicode.com/users
-
-protocol UserPresenterDelegate: AnyObject {
-    func presentUsers(users: [User])
-    
-}
-
-typealias PresenterDelegate = UserPresenterDelegate & UIViewController
-
-
 final class UserPresenter {
+    typealias PresenterDelegate = UserPresenterDelegate & UIViewController
     
     private weak var delegate: PresenterDelegate?
     
     func setViewDelegate(delegate: PresenterDelegate) {
         self.delegate = delegate
-        
     }
     
     func getUsers() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {
+        let url = "\(EndPoint.domain)\(EndPoint.searchUsers)"
+        
+        guard let objectUrl = URL(string: url) else {
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: objectUrl) { [weak self] data, _, error in
             guard let data = data, error == nil else {
                 return
             }
@@ -45,6 +37,9 @@ final class UserPresenter {
         task.resume()
     }
     
+    func didTap(user: User) {
+        delegate?.presentAlert(title: user.name, message: user.email)
+    }
 }
 
 
